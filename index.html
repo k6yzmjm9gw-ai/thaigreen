@@ -307,7 +307,37 @@ transform:translateY(0);
 
 /* Mobile */
 
+menu-toggle{
+    display:none;
+    font-size:32px;
+    cursor:pointer;
+    color:white;
+}
+
 @media(max-width:900px){
+
+.menu-toggle{
+    display:block;
+}
+
+nav ul{
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#111;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 0;
+
+    display:none;
+}
+
+nav ul.active{
+    display:flex;
+}
+}
+@media(max-width:600px){
 
 .hero h1{
 font-size:48px;
@@ -333,11 +363,15 @@ display:none;
 <nav>
 <div class="logo"><img src="./รูป/logo.png" alt="Thai Green Compliance" style="height:55px;width:auto;border-radius:8px;"></div>
 
+<div class="menu-toggle" id="menuToggle">
+    ☰
+</div>
+
 </div>
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
-<li><a href="#store.html">Store</a></li>
+<li><a href="store.html">Store</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="projects.html">Projects</a></li>
 <li><a href="#contact" id="contactMenuBtn" style="cursor:pointer;">Contact</a></li>
@@ -523,6 +557,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <script>
 const reveals = document.querySelectorAll('.reveal');
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.querySelector("nav ul");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
 
 window.addEventListener('scroll', () => {
 reveals.forEach(reveal => {
